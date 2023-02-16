@@ -6,13 +6,16 @@ $notUniqueNumbers = [];
 $sumInRow = [];
 $sumInColumn = [];
 
+$minNumber = 1;
+$maxNumber = 1000;
+
 for ($i = 0; $i < 5; $i++) {
     for ($j = 0; $j < 7; $j++) {
-        //можно do while использовать покрасивше будет
-        while (in_array($randNumber = rand(1, 66), $notUniqueNumbers)) {
-            $randNumber = rand(1, 66);
-        };
-        
+        do {
+            $randNumber = rand($minNumber, $maxNumber);
+        } while (in_array($randNumber, $notUniqueNumbers));
+
+        $notUniqueNumbers[] = $randNumber;
         $numbers[$i][$j] = $randNumber;
 
         if (empty($sumInRow[$i])) {
